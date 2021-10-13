@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2 class="text-center">สร้างโปรไฟล์</h2>
+    <!-- <form action = "/addForm" method = "get"> -->
+    <form action = "/addForm" method = "post"> 
+        {% csrf_token %}
+        <!-- ป้องกันการโจมตี -->
+        <div class = "form-group">
+            <label for="">username</label>
+            <input type="text" class = "form-control" name = "username">
+        </div>
+        <div class = "form-group">
+            <label for="">Firstname</label>
+            <input type="text" class = "form-control" name = "Firstname">
+        </div>
+        <div class = "form-group">
+            <label for="">Lastname</label>
+            <input type="text" class = "form-control" name = "Lastname">
+        </div>
+        <div class = "form-group">
+            <label for="">Email</label>
+            <input type="email" class = "form-control" name = "Email">
+        </div>
+        <div class = "form-group">
+            <label for="">Password</label>
+            <input type="password" class = "form-control" name = "Password">
+        </div>
+        <div class = "form-group">
+            <label for="">Confirm-Password</label>
+            <input type="password" class = "form-control" name = "cfpass">
+        </div>
+        {% if messages %}
+        {% for i in messages %}
+        <div class="alert alert-warning" role="alert">
+            <span class = "text-danger">{{i}}</span> 
+        </div>
+        {% endfor %}
+        {% endif %}
+        <br>
+        <div class = "text-end">
+            <input type="submit" value = "ลงทะเบียน" class = "btn btn-success" >
+        </div>
+        
+    </form>
+    
+{% endblock %}
